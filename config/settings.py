@@ -49,6 +49,7 @@ THIRDPARTY_APPS=[
 LOCAL_APP=[
     'patient'
 ]
+INSTALLED_APPS += THIRDPARTY_APPS + LOCAL_APP
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -153,3 +154,5 @@ SIMPLE_JWT = {
     'SIGNING_KEY': os.getenv('JWT_SECRET_KEY'),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+AUTH_USER_MODEL='patient.CustomUser' 
