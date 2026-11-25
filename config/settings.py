@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 THIRDPARTY_APPS=[
     'rest_framework',
+    'rest_framework_simplejwt'
 ]
 LOCAL_APP=[
     'patient'
@@ -134,4 +135,21 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(
+        minutes=int(os.getenv('JWT_ACCESS_TOKEN_LIFETIME'))
+    ),
+    'REFRESH_TOKEN_LIFETIME': timedelta(
+        days=int(os.getenv('JWT_REFRESH_TOKEN_LIFETIME'))
+    ),
+    'SIGNING_KEY': os.getenv('JWT_SECRET_KEY'),
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
