@@ -1,0 +1,92 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/register/"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  body:
+    type: json
+    content: |-
+      {
+        "confirm_password": "string",
+        "password": "string",
+        "phone": "string",
+        "username": "n",
+        "first_name": "string",
+        "last_name": "string",
+        "email": "string"
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "id": 769,
+        "phone": "string",
+        "username": "5_.15nTj72",
+        "first_name": "string",
+        "last_name": "string",
+        "email": "u0rmYE3@ZuYkCgbYIAFLjnnk.ej"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "maxLength": 150,
+            "pattern": "^[\\w.@+-]+$",
+            "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+          },
+          "first_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "last_name": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "email": {
+            "title": "Email address",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "phone": {
+            "type": "string",
+            "maxLength": 15
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirm_password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "confirm_password",
+          "id",
+          "password",
+          "phone",
+          "username"
+        ]
+      }
+order: 1000

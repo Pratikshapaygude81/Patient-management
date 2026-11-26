@@ -1,0 +1,12 @@
+# Use this workspace to collaborate
+workspace:
+  id: 71fa9537-ec18-414f-819c-1f6a514d2058
+
+localResources:
+  specs:
+    - ../postman/specs/Patient Management API/index.yaml
+    - ./../C:/Users/Dell/Patient-management/postman/specs/openapi.yaml
+resourceNameMappings:
+  specs:
+    - ../postman/specs/Patient Management API/index.yaml: Patient Management API
+    - ../postman/specs/openapi.yaml: openapi.yaml

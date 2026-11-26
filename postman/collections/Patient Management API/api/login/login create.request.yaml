@@ -1,0 +1,37 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/login/"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+       "username": "patient1",
+      "password": "TestPassword123!"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "password",
+        "username"
+      ]
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{bearerToken}}"
+settings: {}
+examples: ./.resources/login create.resources/examples
+order: 1000

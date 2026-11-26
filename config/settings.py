@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 ]
 THIRDPARTY_APPS=[
     'rest_framework',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'drf_spectacular',
 ]
 LOCAL_APP=[
     'patient'
@@ -141,6 +142,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 from datetime import timedelta
@@ -156,3 +158,10 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL='patient.CustomUser' 
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Patient Management API',
+    'DESCRIPTION': 'API documentation for Patient Management',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}

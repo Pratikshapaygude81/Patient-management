@@ -1,0 +1,54 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/api/change-password/"
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
+  body:
+    type: json
+    content: |-
+      {
+        "confirm_password": "string",
+        "new_password": "string",
+        "old_password": "string"
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "confirm_password": "string",
+        "new_password": 4150.678190642685,
+        "old_password": 8544.265093236416
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "old_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          },
+          "confirm_password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "confirm_password",
+          "new_password",
+          "old_password"
+        ]
+      }
+order: 1000
