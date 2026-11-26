@@ -1,0 +1,73 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/register/"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "confirm_password": "string",
+      "password": "string",
+      "phone": "string",
+      "username": "n",
+      "first_name": "string",
+      "last_name": "string",
+      "email": "string"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "maxLength": 150,
+          "pattern": "^[\\w.@+-]+$",
+          "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+        },
+        "first_name": {
+          "type": "string",
+          "maxLength": 150
+        },
+        "last_name": {
+          "type": "string",
+          "maxLength": 150
+        },
+        "email": {
+          "title": "Email address",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "email",
+              "maxLength": 254
+            },
+            {
+              "type": "string",
+              "maxLength": 0
+            }
+          ]
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 15
+        },
+        "password": {
+          "type": "string"
+        },
+        "confirm_password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "confirm_password",
+        "id",
+        "password",
+        "phone",
+        "username"
+      ]
+    }
+settings: {}
+examples: ./.resources/register create.resources/examples
+order: 1000

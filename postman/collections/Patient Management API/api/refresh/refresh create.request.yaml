@@ -1,0 +1,32 @@
+$kind: http-request
+description: |-
+  Takes a refresh type JSON web token and returns an access type JSON web
+  token if the refresh token is valid.
+url: "{{baseUrl}}/api/refresh/"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "refresh": "string",
+      "access": 3670
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "refresh": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "access",
+        "refresh"
+      ]
+    }
+settings: {}
+examples: ./.resources/refresh create.resources/examples
+order: 1000
